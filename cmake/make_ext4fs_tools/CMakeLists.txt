@@ -18,6 +18,10 @@ set(SIMG2IMG_SRC_FILES
 	${IMG2SIMG}/simg2img.c
 	)
 
+set(SIMG2SIMG_SRC_FILES
+	${IMG2SIMG}/simg2simg.c
+	)
+
 set(MAKE_EXT4FS_SRC_FILES
 	${MAKE_EXT4FS}/allocate.c
 	${MAKE_EXT4FS}/canned_fs_config.c
@@ -60,6 +64,11 @@ target_link_libraries(img2simg
 
 add_executable(simg2img ${SIMG2IMG_SRC_FILES})
 target_link_libraries(simg2img
+	sparse
+	zlib)
+
+add_executable(simg2simg ${SIMG2SIMG_SRC_FILES})
+target_link_libraries(simg2simg
 	sparse
 	zlib)
 

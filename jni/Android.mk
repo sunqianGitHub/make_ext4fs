@@ -144,6 +144,25 @@ endif
 include $(BUILD_EXECUTABLE)
 
 ##
+# simg2simg
+#
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := \
+	../src/core/libsparse/simg2simg.c \
+	../src/core/libsparse/sparse_crc32.c
+
+LOCAL_MODULE := simg2simg
+LOCAL_CFLAGS := $(common_cflags)
+LOCAL_STATIC_LIBRARIES := libz libsparse
+LOCAL_C_INCLUDES := $(common_includes)
+LOCAL_MODULE_TAGS := optional
+ifeq ($(STATIC), 1)
+LOCAL_LDFLAGS := -static
+endif
+
+include $(BUILD_EXECUTABLE)
+
+##
 # img2simg
 #
 include $(CLEAR_VARS)

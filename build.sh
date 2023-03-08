@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/bash
+#!/bin/sh
 # File       : build.sh
 # Author     : rendiix <vanzdobz@gmail.com>
 # Create date: 22-Jan-2020 19:04
@@ -9,8 +9,8 @@ else
     echo -e "$1: Could not find Android NDK directory !\nMake sure you have installed android NDK!"; exit 1;
 fi
 
-build () 
-{ 
+build ()
+{
     JOBS=$(grep -c ^processor /proc/cpuinfo);
     if [ "$OPT_DEBUG" = "true" ]; then
         DEBUGFLAGS="NDK_DEBUG=1 APP_OPTIM=debug";
@@ -23,7 +23,7 @@ build ()
                 mkdir prebuilt_binary;
             fi;
             if [ "$OPT_NO_COPY" = "0" ]; then
-                for binary in "make_ext4fs" "img2simg" "simg2img" "sefcontext_decompile";
+                for binary in "make_ext4fs" "img2simg" "simg2img" "simg2simg" "sefcontext_decompile";
                 do
                     cp -f "libs/${DIR_ABI}/${binary}" "prebuilt_binary/${binary}_android_${DIR_ABI}";
                 done;
@@ -34,8 +34,8 @@ build ()
     rm -rf obj
 }
 
-HELP () 
-{ 
+HELP ()
+{
     echo -e "Usage $0 <options>
 
 Options:
@@ -74,7 +74,7 @@ To see more options:
 fi
 
 while true; do
-    case "$1" in 
+    case "$1" in
         -t | --target)
             OPT_TARGET_ARCH="$2"; shift
         ;;
@@ -110,8 +110,8 @@ while true; do
     esac; shift;
 done
 
-info () 
-{ 
+info ()
+{
     echo -e "\nBuild start with cofiguration:\n";
     echo -e "BUILD TARGET ARCH: $OPT_TARGET_ARCH";
     echo -e "EXE TYPE         : $(if [ "$OPT_STATIC" = 1 ]; then echo STATIC; else echo SHARED;fi)";
@@ -123,7 +123,7 @@ info ()
     echo -e "\nPlease wait... \c"
 }
 
-case "$OPT_TARGET_ARCH" in 
+case "$OPT_TARGET_ARCH" in
     arm | arm64 | x86 | x86_64 | all)
 
     ;;

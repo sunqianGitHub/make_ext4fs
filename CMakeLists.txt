@@ -14,4 +14,4 @@ set(common_include
 
 add_subdirectory(cmake)
 
-install(TARGETS sefcontext_decompile img2simg simg2img make_ext4fs DESTINATION ${BIN})
+install(TARGETS sefcontext_decompile img2simg simg2img simg2simg make_ext4fs DESTINATION ${BIN})
