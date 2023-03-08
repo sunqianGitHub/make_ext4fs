@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # File       : build.sh
 # Author     : rendiix <vanzdobz@gmail.com>
 # Create date: 22-Jan-2020 19:04
